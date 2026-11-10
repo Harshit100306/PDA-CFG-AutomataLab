@@ -1,0 +1,11 @@
+flowchart TD
+S([Start]) --> PUSH["Push symbols while reading first part"]
+PUSH --> GUESS{"Nondeterministically guess midpoint"}
+GUESS -->|Even length| MATCH["Read suffix and match stack top"]
+GUESS -->|Odd length| SKIP["Consume one centre symbol"]
+SKIP --> MATCH
+MATCH --> OK{"Symbol matches top?"}
+OK -->|Yes| POP["Pop and continue"]
+OK -->|No| R[["Reject this branch"]]
+POP --> MATCH
+MATCH -->|Input exhausted and stack empty| A((Accept branch))

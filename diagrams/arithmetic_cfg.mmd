@@ -1,0 +1,8 @@
+flowchart TD
+E["E: expression"] --> T["T: term"]
+E --> EP["E': + T E' | - T E' | ε"]
+T --> F["F: factor"]
+T --> TP["T': * F T' | / F T' | ε"]
+F --> P["( E )"]
+F --> ID["id"]
+F --> NUM["number"]

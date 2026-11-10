@@ -1,0 +1,11 @@
+flowchart TD
+S([Start]) --> Q{Read next symbol}
+Q -->|(| P["Push X onto stack"]
+Q -->|)| C{"Stack top is X?"}
+C -->|Yes| POP["Pop X"]
+C -->|No| R[["Reject"]]
+P --> Q
+POP --> Q
+Q -->|End of input| E{"Stack contains only Z0?"}
+E -->|Yes| A((Accept))
+E -->|No| R
